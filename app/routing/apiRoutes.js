@@ -1,20 +1,27 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
-app.get("../data/friends.js", function (req, res) {
-    return res.json(tables);
-});
+    var users = require("../data/friends.js");
+    
+    app.get("/api/friends", function(req, res){
+        return res.json(users);
+    });
+    
 
-app.post("./../api/friends", function (req, res) {
-    var newTable = req.body;
+    app.post("/api/friends", function (req, res) {
+        var newUser = req.body;
 
-    console.log(newTable);
+        console.log(newUser);
+        
+        console.log(users);
+        
+        // app.get("/api/friends", function (req, res) {
+        //     var users = res.body;
+        //     console.log(users);
+        // })
+        // tables.push(users);
 
-    if (tables.length < 5) {
-        tables.push(newTable);
-    } else {
-        waitlist.push(newTable);
-    }
-
-    res.json(newTable);
-});
+        // res.json(newTable);
+    });
 }
+
+

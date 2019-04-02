@@ -1,18 +1,51 @@
+var users = [{
+  Name: "brittany",
+  link: "https://lumiere-a.akamaihd.net/v1/images/Yoda-Retina_2a7ecc26.jpeg?region=0%2C0%2C1536%2C864&width=960",
+  score: [
+    1,
+    2,
+    3,
+    4,
+    5,
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+},
+{
+  Name: "christina",
+  link: "https://lumiere-a.akamaihd.net/v1/images/Yoda-Retina_2a7ecc26.jpeg?region=0%2C0%2C1536%2C864&width=960",
+  score: [
+    1,
+    2,
+    3,
+    4,
+    5,
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+},
+{
+  Name: "yoda",
+  link: "https://lumiere-a.akamaihd.net/v1/images/Yoda-Retina_2a7ecc26.jpeg?region=0%2C0%2C1536%2C864&width=960",
+  score: [
+    1,
+    2,
+    3,
+    4,
+    5,
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}
+];
 
-    // Question: What does this code do??
-  //   $.post("/api/tables", newUser)
-  //     .then(function (data) {
-  //       $.get("/api/tables", function (data) {
-  //         console.log(data[4] = true);
-  //         if (data[4] === true) {
-  //           alert("sorry you've been waitlisted")
-  //         }
-  //         else {
-  //           console.log(data);
-  //           alert("Adding your reservation...");
-  //         }
-  //       })
-
-  //     });
-
-  // });
+module.exports = {users: users}

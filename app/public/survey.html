@@ -55,7 +55,7 @@
                                 <h4>How active are you in your free time?</h4>
                                 <br>
                                 <div class="form-check form-check-inline">Netflix and Chill
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" required
                                         id="inlineRadio1" value="1">
                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                 </div>
@@ -173,7 +173,6 @@
                                     <label class="form-check-label" for="inlineRadio5">5</label> Ultramarathon
                                 </div>
                             </div>
-                        </form>
                         <br>
                         <div id="Q4">
                             <h3> <strong>Question 5 </strong> </h3>
@@ -205,7 +204,6 @@
                                 <label class="form-check-label" for="inlineRadio5">5</label> Ultramarathon
                             </div>
                         </div>
-                        </form>
                         <br>
                         <div id="Q4">
                             <h3> <strong>Question 6 </strong> </h3>
@@ -237,7 +235,6 @@
                                 <label class="form-check-label" for="inlineRadio5">5</label> Ultramarathon
                             </div>
                         </div>
-                        </form>
                         <br>
                         <div id="Q4">
                             <h3> <strong>Question 7 </strong> </h3>
@@ -269,7 +266,6 @@
                                 <label class="form-check-label" for="inlineRadio5">5</label> Ultramarathon
                             </div>
                         </div>
-                        </form>
                         <br>
                         <div id="Q5">
                             <h3> <strong>Question 8 </strong> </h3>
@@ -376,30 +372,67 @@
         </div>
     </div>
 
-    <a href="/api/tables">API Link</a>
+    <div id="resultModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
+
+    <a href="/api/friends">API Link</a>
 
     <script>
-    $("#add-btn").on("click", function (event) {
-    event.preventDefault();
+        var modal = document.getElementById('resultModal');
+        var span = document.getElementsByClassName("close")[0];
 
-    var newUser = {
-      name: $("#name").val().trim(),
-      link: $("#link").val().trim(),
-      Q1: $("input[name=inlineRadioOptions]:checked").val(),
-      Q2: $("input[name=inlineRadioOptionsQ2]:checked").val(),
-      Q3: $("input[name=inlineRadioOptionsQ3]:checked").val(),
-      Q4: $("input[name=inlineRadioOptionsQ4]:checked").val(),
-      Q5: $("input[name=inlineRadioOptionsQ5]:checked").val(),
-      Q6: $("input[name=inlineRadioOptionsQ6]:checked").val(),
-      Q7: $("input[name=inlineRadioOptionsQ7]:checked").val(),
-      Q8: $("input[name=inlineRadioOptionsQ8]:checked").val(),
-      Q9: $("input[name=inlineRadioOptionsQ9]:checked").val(),
-      Q10: $("input[name=inlineRadioOptionsQ10]:checked").val()
-      };
+        function displayModal() {
+            modal.style.display = "block";
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
 
-      console.log(newUser)
-    })
-</script>
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+
+            var newUser = {
+                name: $("#name").val().trim(),
+                link: $("#link").val().trim(),
+                scores: [$("input[name=inlineRadioOptions]:checked").val(),
+                $("input[name=inlineRadioOptionsQ2]:checked").val(),
+                $("input[name=inlineRadioOptionsQ3]:checked").val(),
+                $("input[name=inlineRadioOptionsQ4]:checked").val(),
+                $("input[name=inlineRadioOptionsQ5]:checked").val(),
+                $("input[name=inlineRadioOptionsQ6]:checked").val(),
+                $("input[name=inlineRadioOptionsQ7]:checked").val(),
+                $("input[name=inlineRadioOptionsQ8]:checked").val(),
+                $("input[name=inlineRadioOptionsQ9]:checked").val(),
+                $("input[name=inlineRadioOptionsQ10]:checked").val()
+                ]
+            };
+            displayModal();
+            console.log(newUser)
+
+            $.post("/api/friends", newUser)
+            .then(function (data) {
+                console.log(data)
+            })
+
+
+        })
+
+
+
+    </script>
 
 </body>
 

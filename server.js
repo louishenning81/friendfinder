@@ -8,9 +8,9 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 require("./app/routing/htmlRoutes.js")(app);
-// require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/apiRoutes.js")(app);
 
-var friends = [];
+// var friends = [];
 
 // app.get("/", function (req, res) {
 //     res.sendFile(path.join(__dirname, "app", "public", "home.html"));
