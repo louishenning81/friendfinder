@@ -378,7 +378,28 @@
 
     <a href="/api/tables">API Link</a>
 
-    <script src="../friends.js"></script>
+    <script>
+    $("#add-btn").on("click", function (event) {
+    event.preventDefault();
+
+    var newUser = {
+      name: $("#name").val().trim(),
+      link: $("#link").val().trim(),
+      Q1: $("input[name=inlineRadioOptions]:checked").val(),
+      Q2: $("input[name=inlineRadioOptionsQ2]:checked").val(),
+      Q3: $("input[name=inlineRadioOptionsQ3]:checked").val(),
+      Q4: $("input[name=inlineRadioOptionsQ4]:checked").val(),
+      Q5: $("input[name=inlineRadioOptionsQ5]:checked").val(),
+      Q6: $("input[name=inlineRadioOptionsQ6]:checked").val(),
+      Q7: $("input[name=inlineRadioOptionsQ7]:checked").val(),
+      Q8: $("input[name=inlineRadioOptionsQ8]:checked").val(),
+      Q9: $("input[name=inlineRadioOptionsQ9]:checked").val(),
+      Q10: $("input[name=inlineRadioOptionsQ10]:checked").val()
+      };
+
+      console.log(newUser)
+    })
+</script>
 
 </body>
 

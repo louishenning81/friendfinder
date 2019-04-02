@@ -1,8 +1,10 @@
-app.get("/api/tables", function (req, res) {
+module.exports = function(app) {
+
+app.get("../data/friends.js", function (req, res) {
     return res.json(tables);
 });
 
-app.post("/api/tables", function (req, res) {
+app.post("./../api/friends", function (req, res) {
     var newTable = req.body;
 
     console.log(newTable);
@@ -15,3 +17,4 @@ app.post("/api/tables", function (req, res) {
 
     res.json(newTable);
 });
+}
