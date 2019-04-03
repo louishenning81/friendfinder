@@ -375,7 +375,7 @@
     <div id="resultModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" id="modal-results">
             <span class="close">&times;</span>
             <p>Some text in the Modal..</p>
         </div>
@@ -422,9 +422,9 @@
             displayModal();
             console.log(newUser)
 
-            $.post("/api/friends", newUser)
-            .then(function (data) {
-                console.log(data)
+            $.post("/api/friends", newUser, function (data) {
+                console.log(data.Name)
+                $("#modal-results").html(data.Name)
             })
 
 
