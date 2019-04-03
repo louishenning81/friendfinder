@@ -45,7 +45,24 @@ var users = [{
     2,
     2
   ]
+},
+{
+  Name: "Esteban",
+  link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4T0AAxnfTuNevnIlVKTWpdkUuK84EYar_XLsR9VLkGAty5cHbg",
+  score: [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ]
 }
+
 ];
 
 module.exports = users;
