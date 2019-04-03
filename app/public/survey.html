@@ -362,8 +362,8 @@
                         </form>
                         <br>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-md" id="add-btn">
-                                <span class="reserve"></span> Find your result</button>
+                            <button type="submit" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModalCenter" id="add-btn">
+                                <span class="reserve"></span> See your result</button>
                         </div>
                     </div>
                 </div>
@@ -372,34 +372,28 @@
         </div>
     </div>
 
-    <div id="resultModal" class="modal">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Your Match</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <!-- Modal content -->
-        <div class="modal-content" id="modal-results">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-        </div>
-
-    </div>
-
-    <a href="/api/friends">API Link</a>
+    <a href="/api/friends">API Friend Link</a>
 
     <script>
-        var modal = document.getElementById('resultModal');
-        var span = document.getElementsByClassName("close")[0];
-
-        function displayModal() {
-            modal.style.display = "block";
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        }
+        
 
         $("#add-btn").on("click", function (event) {
             event.preventDefault();
@@ -419,12 +413,15 @@
                 $("input[name=inlineRadioOptionsQ10]:checked").val()
                 ]
             };
-            displayModal();
             console.log(newUser)
 
             $.post("/api/friends", newUser, function (data) {
-                console.log(data.Name)
-                $("#modal-results").html(data.Name)
+                console.log(data.Name);
+                var image = $("<img>");
+                image.attr("src", data.link);
+                var name = data.Name;
+                var nameP = $("<p>").text("Name: " + name)
+                $(".modal-body").prepend(nameP, image)
             })
 
 
